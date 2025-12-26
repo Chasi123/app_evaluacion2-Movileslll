@@ -6,10 +6,11 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized(); 
-  await Firebase.initializeApp(); 
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MainApp());
 }
+
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
@@ -34,38 +35,22 @@ class Cuerpo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text("Welcome")),
-      body: Column(children: [
-              Text(
-                "Desarrollador: Chrsitopher Chasiloa \n Usuario git: chasi123",
-                style: TextStyle(fontSize: 20),
-              ),
-              Text("Por favor, inicia sesión o regístrate"),
-              SizedBox(height: 40),
-
-              SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: FilledButton(
-                  onPressed: () => Navigator.pushNamed(context, '/login'),
-                  child: const Text("Iniciar Sesión", style: TextStyle(fontSize: 15),
-                  ),
-                ),
-              ),
-
-              SizedBox(height: 15),
-
-              SizedBox(
-                width: double.infinity,
-                height: 50,
-                child: OutlinedButton(
-                  onPressed: () => Navigator.pushNamed(context, '/register'),
-                  child: const Text("Registrarse", style: TextStyle(fontSize: 15),
-                  ),
-                ),
-              ),
-      ],
-          
+      body: Column(
+        children: [
+          Text(
+            "Desarrollador: Chrsitopher Chasiloa \n Usuario git: chasi123",
+            style: TextStyle(fontSize: 20),
           ),
+          FilledButton(
+            onPressed: () => Navigator.pushNamed(context, '/login'),
+            child: Text("Iniciar Sesión"),
+          ),
+          OutlinedButton(
+            onPressed: () => Navigator.pushNamed(context, '/register'),
+            child: Text("Registrarse"),
+          ),
+        ],
+      ),
     );
   }
 }

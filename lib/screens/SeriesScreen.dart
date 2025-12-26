@@ -46,7 +46,8 @@ void detalles (context){
         builder: (context) => AlertDialog(content: Column(children: [
           Text(item['titulo'], style: TextStyle(fontSize: 28, color: Color.fromRGBO(214, 31, 31, 1)), ), 
           Image.network(item['info']['imagen'], width: 300, height: 300, fit: BoxFit.cover,),
-          Text("Descripcion: ${item['descripcion']}",),
+          Text("Creador: ${item['metadata']['creador']}", style: TextStyle(fontSize: 25)),
+          Text("Url de la pelicula: ${item['info']['url']}",),
           Text("año: ${item['anio']} ", style: TextStyle(fontSize: 30, color: Color.fromARGB(164, 88, 119, 204)),)
         ],)),
       );
@@ -55,7 +56,11 @@ void detalles (context){
           child: ListTile(
             title: Text(item['titulo'], style: TextStyle(fontSize: 25)),
             onTap: () =>detalles(context) ,
-            subtitle: Image.network(item['info']['imagen'], fit: BoxFit.cover,),
+            subtitle: Column(children: [
+              Text("Descripcion: ${item['descripcion']}",),
+              Image.network(item['info']['imagen'], fit: BoxFit.cover,),
+
+              ],) 
             ),
         );
       }, );
